@@ -12,13 +12,13 @@
 #define HS_FILE "FinalProjectDataHS.csv"
 #define PS_FILE "FinalProjectDataPS.csv"
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) { // Are these parameters for a function? They may need to be moved because int main is just to start the C program.
     // 1. Create context to hold all loaded data
     DataContext ctx;
 
     // 2. Load each data file via loader module
-    ctx.oses       = load_all_os(OS_FILE,        &ctx.os_count);
-    ctx.softs      = load_all_software(RS_FILE,  &ctx.sw_count);
+    ctx.oses       = load_all_os(OS_FILE,        &ctx.os_count); // You may need to define the load_all_os.
+    ctx.softs      = load_all_software(RS_FILE,  &ctx.sw_count); 
     ctx.hvs        = load_all_hypervisors(HS_FILE, &ctx.hv_count);
     ctx.prods      = load_all_products(PS_FILE,  &ctx.prod_count);
 
@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
     if (!ctx.oses || !ctx.softs || !ctx.hvs || !ctx.prods) {
         fprintf(stderr, "Fatal: could not load one or more data files.\n");
         free_data(&ctx);  // cleanup any partially loaded data
-        return EXIT_FAILURE;
+        return EXIT_FAILURE; // It would be just -1 for an exit failure.
     }
 
     // 4. Enter CLI loop; users choose report functions from TechReport
