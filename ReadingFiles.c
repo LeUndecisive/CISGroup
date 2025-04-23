@@ -13,11 +13,8 @@ typedef struct Node{
     char Name[30];
     char Version[5];
     char ReDate[12];
-
     // OS Hardware
     char Hardware[30];
-
-
     //next node
     struct Node* next;
 
@@ -42,13 +39,13 @@ Node* CreateNode(){
     return NewNode;
 }
 
-//Prints the entire compiled list
+//Testing print statements
 void PrintList(List* SentList){
     printf("%s\n",SentList->Head->ID);
     printf("%s\n",SentList->Head->Name);
 }
 
-// While  search for a selected ID (Returns NULL unless Node is found)
+// While search for a selected ID (Returns NULL unless Node is found)
 Node* SearchForID(List* SentList,char SentID[5]){
 
     Node* CurrentNode = SentList->Head;
@@ -81,10 +78,8 @@ void AssignListHead (List* SentList, Node* SentNode){
 // Reads from a inserted file and inserts contents into a sentlist.
 void ReadStoredData(FILE* SelectedFile, List* SentList){
 
-    //Loop until file end
     //-----Read-Line----------
     char ReadLine[100];
-
     while(fgets(ReadLine,sizeof(ReadLine),SelectedFile) != NULL){
 
     //------Create-Empty-Node---
@@ -95,11 +90,11 @@ void ReadStoredData(FILE* SelectedFile, List* SentList){
         char* token = strtok(ReadLine,",");
         strcpy(CurrentNode->ID,ReadLine);
         int I;
-
+        
+    //---Organize-And-Seperate-Read-Data--------
         for (I = 0; I < 4;I++){
             token = strtok(NULL,",");
-
-           // printf("%s\n", token);
+            
             switch(I){
                 case 0:
                     strcpy(CurrentNode->Name,token);
@@ -112,14 +107,12 @@ void ReadStoredData(FILE* SelectedFile, List* SentList){
 
                 case 3:
                     strcpy(CurrentNode->ReDate,token);
-
             }
         }
-
     }
-
 }
 
+//------Main----------
 
 int main()
 {
@@ -161,7 +154,7 @@ int main()
         printf("Node with ID of: %s was not found\n",SearchKey);
     }
 
-//----Close-Files----------------------
+//----Close-Files-------------------
 
     fclose(SelectedFile);
     return 0;
