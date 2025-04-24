@@ -14,7 +14,7 @@ Ending the program when desired.
 
     
 ## Expected File contents:
-  - The functions <sub>or</sub>manual writing will depend on how function heavy we make it.
+  - The functions <sub>or</sub> manual writing will depend on how function heavy we make it.
   - Meaning there could be manual writing or simply function calling. 	<ins>(How function heavy do you wish a section / work to be for other files)</ins>
 
 MainFunc.H  <sub>Houses functions which can be ~~universally~~ used by other c files</sub>
