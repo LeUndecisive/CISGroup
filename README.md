@@ -1,2 +1,0 @@
-# CISGroup
-A group repository
