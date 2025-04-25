@@ -6,23 +6,26 @@
 #include "loader.h"       // Defines OperatingSystem and Software structs
 #include "TechReport.h"   // Defines Hypervisor and Product structs
 
-/**----Menu-Funcs----------------
-   Contains a function to be called within main.c
-   Menu(DataContext)
-*/
+//--Structs--------------
+typedef struct Node{
 
-/**-----Print-Funcs---------------
-    Contains the functions to be called by Menu
-    PrintALL(DataContext)
-*/
+    //All similar data
+    char ID[6];
+    char Name[100];
+    char Version[10];
+    char ReDate[10];
 
+    // OS Hardware
+    char Hardware[100];
 
-/**-----Loader-Funcs---------------
-    Contains functions to be called by Menu and Print
-    SearchForID(DataContext->List, ID)
-    ReadStoredData( File, DataContext->List)
-*/
+    //next node
+    struct Node* next;
+} Node;
 
+typedef struct List{
+    Node* Head;
+    Node* Tail;
+} List;
 
 /**---Data-Context-----------------
     Bundles all loaded data arrays and their counts into one struct
@@ -42,6 +45,30 @@ typedef struct {
     Product         *prods;   /**< Array of Product entries */
     size_t           prod_count;/**< Number of Product entries */
 } DataContext;
+
+/**----Menu-Funcs----------------
+   Contains a function to be called within main.c
+   Menu(DataContext)
+*/
+
+/**-----Print-Funcs---------------
+    Contains the functions to be called by Menu
+    PrintALL(DataContext)
+*/
+
+
+/**-----Loader-Funcs---------------
+    Contains functions to be called by Menu and Print
+    SearchForID(DataContext->List, ID)
+    ReadStoredData( File, DataContext->List)
+*/
+
+// Returns an Node otherwise Returns NULL.
+Node* SearchForID(List* SentList,char SentID[5]);
+// Fills a SentList's data with FILE | Creating nodes (OS only ATM)
+void ReadStoredData(FILE* SelectedFile, List* SentList);
+// Sets a SentList's Head n Tail to NULL
+void initList(List* SentList);
 
 /**
  * free_data
