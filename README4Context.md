@@ -90,26 +90,26 @@ Loader.C | ReadStoreData( ) | SearchID( ) <sub>References own MainFunc.H()</sub>
 ## TASKI can go over task through communications | I will write my idea / task down later
 4/25/25 - LeUndecisive - Task Assignment - Job
 
-###LeUndecisive
+### LeUndecisive
    - Implement and Define the Loader.C functions
    - Create .c and .h files
 
-###nicholashuish
+### nicholashuish
    - Implement and Define the Print.c functions
    - Assisting with printing and formating within Menu.c
    - Request for functions to be made by Loader.c
 
-###banglea669
+### banglea669
    - Implement and Define the Menu.c functions
    - Calling Loader.c or Print.c functions
    - Request for functions to be made by Print.c or Loader.c
 
-###Atha3-S
+### Atha3-S
    - Implement the main.c lines and functions
    - Error catch Print.c, Loader.c, Menu.c, main.c and Main.h (Write error checks / escapes)
    - Test the current build
 
-###ALL
+### ALL
    - Any can / may ask another member to assist or update contents which they may have made. 
    - Request changes or makes changes to code.
    - Let others do work as well :D 
