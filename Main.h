@@ -1,16 +1,34 @@
-// util.h
-#ifndef UTIL_H
-#define UTIL_H
+// Main.h <- util.h
+#ifndef MAIN_H
+#define MAIN_H
 
 #include <stddef.h>
 #include "loader.h"       // Defines OperatingSystem and Software structs
 #include "TechReport.h"   // Defines Hypervisor and Product structs
 
-/**
- * DataContext
- * Bundles all loaded data arrays and their counts into one struct
- * so that loader, report, and CLI modules can share a single context.
- */
+/**----Menu-Funcs----------------
+   Contains a function to be called within main.c
+   Menu(DataContext)
+*/
+
+/**-----Print-Funcs---------------
+    Contains the functions to be called by Menu
+    PrintALL(DataContext)
+*/
+
+
+/**-----Loader-Funcs---------------
+    Contains functions to be called by Menu and Print
+    SearchForID(DataContext->List, ID)
+    ReadStoredData( File, DataContext->List)
+*/
+
+
+/**---Data-Context-----------------
+    Bundles all loaded data arrays and their counts into one struct
+    so that loader, report, and CLI modules can share a single context.
+*/
+
 typedef struct {
     OperatingSystem *oses;    /**< Array of OperatingSystem entries */
     size_t           os_count;/**< Number of OperatingSystem entries */
@@ -35,4 +53,4 @@ typedef struct {
  */
 void free_data(DataContext *ctx);
 
-#endif // UTIL_H
+#endif // MAIN_H
