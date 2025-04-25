@@ -33,17 +33,17 @@ Main.C <sub>References loader.c MainFunc.H</sub>
 
 Menu.C | CliMenu( ) <sub>References Print.c and loader.c MainFunc.H</sub>
 
- Contain a loop which will not exit until desired by the user.
- Allowing the user to enter numbers to match a present selection, in the form of a base case.
- The user should be presented with: **"Operating Systems | Related Software | HyperVisors | Products | Exit"**
- Selecting anything other than exit should provide| **"PrintALL,SearchID,Back"**
- Searching an ID should prompt the user to enter an ID
- If the ID (Node) is found then should its contents be printed out
- Prompting the useragain with the three options
- Otherwise they should be prompted with: **"This ID could not be found"**
- Displaying a list of all ID avaiable to enter
- Allowing the user to enter an ID once again
- Upon selecting back and exiting should this loop be broken.
+     Contain a loop which will not exit until desired by the user.
+     Allowing the user to enter numbers to match a present selection, in the form of a base case.
+     The user should be presented with: **"Operating Systems | Related Software | HyperVisors | Products | Exit"**
+     Selecting anything other than exit should provide| **"PrintALL,SearchID,Back"**
+     Searching an ID should prompt the user to enter an ID
+     If the ID (Node) is found then should its contents be printed out
+     Prompting the useragain with the three options
+     Otherwise they should be prompted with: **"This ID could not be found"**
+     Displaying a list of all ID avaiable to enter
+     Allowing the user to enter an ID once again
+     Upon selecting back and exiting should this loop be broken.
 
 Print.C | PrintALL( ) <sub>References loader.c MainFunc.H()</sub>
 
