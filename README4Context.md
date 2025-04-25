@@ -23,13 +23,20 @@ A group repository :D
 
 MainFunc.H  <sub>Houses functions which can be ~~universally~~ used by other c files</sub>
 
-     Contains functions which will be called by: Main.c Menu.c Print.C Loader.C
-     
-     These functions should be main functions which require background work.
-     
-     **PrintALL, SearchID, ReadStoredData, CliMenu**
-     
-     A function which can do all (Hiding manual writing)
+    struct Node | To store data (This may change)
+    struct List | To create a list OS_List, RP_List
+    struct DataContext | To store all list
+
+    initList(List* SentList) | For main to create list
+    ReadStoredData(File,SentList) | For main.c to store data to list
+    SearchForID(List,ID) | For Menu.c or Print.c
+
+    PrintALL(List* SentList) | For Menu to call
+
+    Menu(DataContext) | For Main.c to call
+~~----------------------------------------------------~~
+    More functions / structs can be added, depedning on the workflow.
+    These functions will / should be called by other c files.
 
 Main.C <sub>References loader.c MainFunc.H</sub>
 
@@ -81,5 +88,26 @@ Loader.C | ReadStoreData( ) | SearchID( ) <sub>References own MainFunc.H()</sub>
 
 
 ## TASKI can go over task through communications | I will write my idea / task down later
-     However I do have them written down somewhere however this is simply an overall outline
+4/25/25 - LeUndecisive - Task Assignment - Job
+LeUndecisive
+    Implement and Define the Loader.C functions
+    Create .c and .h files
+nicholashuish
+    Implement and Define the Print.c functions
+    Assisting with printing and formating within Menu.c
+    Request for functions to be made by Loader.c
+banglea669
+    Implement and Define the Menu.c functions
+    Calling Loader.c or Print.c functions
+    Request for functions to be made by Print.c or Loader.c
+Atha3-S
+    Implement the main.c lines and functions
+    Error catch Print.c, Loader.c, Menu.c, main.c and Main.h (Write error checks / escapes)
+    Test the current build
+   
+ALL
+    Any can / may ask another member to assist or update contents which they may have made. 
+    Request changes or makes changes to code.
+    Let others do work as well :D 
+    
 
