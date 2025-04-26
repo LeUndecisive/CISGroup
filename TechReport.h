@@ -1,6 +1,7 @@
 #ifndef TECHREPORT_H
 #define TECHREPORT_H
 
+#include "TechReport.h"
 #include "Main.h"  // Include the main header for structures
 
 // Function declarations for reporting
