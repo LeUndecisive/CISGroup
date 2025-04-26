@@ -12,28 +12,37 @@
 #define HS_FILE "FinalProjectDataHS.csv"
 #define PS_FILE "FinalProjectDataPS.csv"
 
-int main(int argc, char *argv[]) { // Are these parameters for a function? They may need to be moved because int main is just to start the C program.
-    // 1. Create context to hold all loaded data
-    DataContext ctx;
+// Function to load files
+int load_files(DataContext* ctx, const char* os_file, const char* rs_file, const char* hs_file, const char* ps_file) {
+    ctx->oses = load_all_os(os_file, &ctx->os_count);
+    ctx->softs = load_all_software(rs_file, &ctx->sw_count);
+    ctx->hvs = load_all_hypervisors(hs_file, &ctx->hv_count);
+    ctx->prods = load_all_products(ps_file, &ctx->prod_count);
 
-    // 2. Load each data file via loader module
-    ctx.oses       = load_all_os(OS_FILE,        &ctx.os_count); // You may need to define the load_all_os.
-    ctx.softs      = load_all_software(RS_FILE,  &ctx.sw_count); 
-    ctx.hvs        = load_all_hypervisors(HS_FILE, &ctx.hv_count);
-    ctx.prods      = load_all_products(PS_FILE,  &ctx.prod_count);
-
-    // 3. Check for loader errors (NULL on failure)
-    if (!ctx.oses || !ctx.softs || !ctx.hvs || !ctx.prods) {
+    if (!ctx->oses || !ctx->softs || !ctx->hvs || !ctx->prods) {
         fprintf(stderr, "Fatal: could not load one or more data files.\n");
-        free_data(&ctx);  // cleanup any partially loaded data
-        return EXIT_FAILURE; // It would be just -1 for an exit failure.
+        free_data(ctx);
+        return 0; // Failure
+    }
+    return 1; // Success
+}
+
+int main(int argc, char *argv[]) {
+    if (argc < 5) {
+        fprintf(stderr, "Error: Not enough arguments.\n");
+        return EXIT_FAILURE;
     }
 
-    // 4. Enter CLI loop; users choose report functions from TechReport
+    DataContext ctx;
+    
+    if (!load_files(&ctx, argv[1], argv[2], argv[3], argv[4])) {
+        return EXIT_FAILURE;
+    }
+
+    // Run the CLI loop
     run_cli(&ctx);
 
-    // 5. After user exits, clean up all allocated memory
+    // Clean up and exit
     free_data(&ctx);
-
     return EXIT_SUCCESS;
 }
