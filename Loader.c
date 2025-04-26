@@ -1,5 +1,5 @@
-// util.c
-#include "util.h"
+#include "Loader.h"
+#include "Main.h"  // if you need access to structures like DataContext
 #include <stdlib.h>
 #include <stdio.h>
 
