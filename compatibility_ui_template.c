@@ -4,7 +4,7 @@
  *
  */
 
-#ifndef COMPATIBILITY_REPORTS_H
+#define COMPATIBILITY_REPORTS_H // Did you mean "define"? - Nicholas
 #define MAX_NAME_LEN 100
 #define MAX_ITEMS    1000
 
