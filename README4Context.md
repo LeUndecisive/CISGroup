@@ -114,4 +114,5 @@ Loader.C | ReadStoreData( ) | SearchID( ) <sub>References own MainFunc.H()</sub>
    - Request changes or makes changes to code.
    - Let others do work as well :D 
     
-
+### Suggestions
+   - I recommend banglea to add our run_cli to the Menu.c (and declare it in Menu.h "void run_cli(DataContext *ctx);") The run_cli could use the "switch" function and base on the number the user inputs it will do a different type of report, which would be used to call the corisponding function from TechReport (or Print if thats what we are using for output)
