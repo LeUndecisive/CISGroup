@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "loader.h"       // loader.c: load_all_* functions
+#include "Loader.h"       // loader.c: load_all_* functions
 #include "TechReport.h"   // TechReport.c: report functions
-#include "cli.h"          // cli.c: run_cli()
-#include "util.h"         // util.c: DataContext & free_data()
+#include "Menu.h"          
+#include "Print.h"         
+#include "Main.h"
 
 // File path macros (adjust names/paths as needed)
 #define OS_FILE "FinalProjectDataOS.csv"
