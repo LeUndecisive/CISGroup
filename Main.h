@@ -1,8 +1,23 @@
-// Main.h
 #ifndef MAIN_H
 #define MAIN_H
 
 #include <stddef.h>
+
+// Define the Node struct
+typedef struct Node {
+    char ID[6];         // Unique identifier for the node
+    char Name[100];     // Name associated with the node
+    char Version[10];   // Version info
+    char ReDate[10];    // Release date
+    char Hardware[100]; // Hardware type
+    struct Node* next;  // Pointer to the next node in the list
+} Node;
+
+// Define the List struct
+typedef struct List {
+    Node* Head;        // Pointer to the head (first node)
+    Node* Tail;        // Pointer to the tail (last node)
+} List;
 
 // Define the OperatingSystem struct
 typedef struct {

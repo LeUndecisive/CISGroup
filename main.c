@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
     }
 
     // Run the CLI loop
-    menu(&ctx);
+    run_cli(&ctx);
 
     // Clean up and exit
     free_data(&ctx);
