@@ -1,102 +1,100 @@
-#include <stdio.h> 
+/*---Info-Box-----------
+]   Fill out print function declarations (To-DO)
+]   Organization of the print statements can be altered (Formating)
+]   Please use the other filled print statements as a reference source
+*/
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "Loader.h"
 
-/* What I had to do was send each individual report
-   to my Google Drive on Windows, log into the VLE
-   and download them, and then convert each one into
-   a csv file. Then after that, I was able to run and 
-   display them using the Linux terminal. */
-   
-/* Here in C, you can define the type of files you
-   want and easily use them for various tasks. */
-   
-/* In this case, you need the FILE portion for the
-   naming conventions, but then you can do what you
-   want after that. Here I used two letters to define
-   each file name. So OS = Operating Systems, 
-   RS = Related Software, HS = Hypervisors, and
-   PS = Products. I personally named the files
-   FinalProjectData along with their individual
-   letters to signal which reports they belong
-   too. If we want, we can change the names. */
-   
-#define OS_FILE "FinalProjectDataOS.csv" 
-#define RS_FILE "FinalProjectDataRS.csv"
-#define HS_FILE "FinalProjectDataHS.csv"
-#define PS_FILE "FinalProjectDataPS.csv"							
+void PrintALL_IDS(List* SentList){
+    printf("\nAvailable ID's:");
+    Node* CurrentNode = SentList->Head;
+    while (CurrentNode != NULL){
+        printf(" %s",CurrentNode->ID);
+        CurrentNode =  CurrentNode->next;
+    }
+     printf("\n\n");
+};
 
-// Code so far works without the function. READ BELOW.
+/**---Prints-Data-From-OS-Node----------
+    Used when the user provided ID fails
+*/
+void PrintNode_OS(Node* SentNode){
+    printf("Platform: %s ||",SentNode->Platform);
+    printf(" ID: %s ||",SentNode->ID);
+    printf(" Name: %s ||",SentNode->Name);
+    printf(" Version: %s ||",SentNode->Version);
+    printf(" Hardware: %s ||",SentNode->Hardware);
+    printf(" Release Date: %s",SentNode->ReDate);
 
-/* I will eventually change the variable names in the function.
-   But so far, it is just a sample and I believe it does not need 
-   to be changed. When the time comes I will have to call it. 
-   Potentially I may also have to create copies of this function,
-   unless I can apply it to all the reports.*/
-void print_to_file(FILE *inFile, const char *data, int numbers){
-	if (inFile == NULL) {
-		printf("Error: Invalid file pointer. \n");
-	}
-	fprintf(inFile, "%s %d\n", data, numbers);
-}
+};
 
-int main(void){
+/**-----Prints-The-List-Data-Of-OS-------------------------
 
-/* Goes to general structure of the filing system
-   But it can be changed and may be used for 
-   a typedef struct if we all want to use those. */
-FILE* inFile = NULL; 
+*/
+void PrintALL_OS(List* SentList){
+   // printf("\n\n [PrintALL_OS-TechReport.c] \n\n"); [Remove or Comment this placeholders]
+    Node* CurrentNode = SentList->Head;
+    while (CurrentNode != NULL){
+        PrintNode_OS(CurrentNode);
+        printf("\n\n");
+        CurrentNode =  CurrentNode->next;
+    }
+};
 
-// Test to open and read the OS report file.
-printf("Opening file %s.\n", OS_FILE);
+/**----Prints-The-Data-Of-RS-Node--------------------------
 
-inFile = fopen(OS_FILE, "r");
+*/
+void PrintNode_RS(){
 
-/* Condition stating what happens if a file
-   could not be opened. */
-if (inFile == NULL) {
-	printf("Could not open file %s!\n", OS_FILE);
-	return -1; // Indicates an error in "C". 
-}
+    printf("\n\n [PrintNode_RS-TechReport.c] \n\n");
 
-/* Here I decided to create a temporary array for 
-   now so the program could read all the characters
-   including spaces within the
-   files. We can keep it if we want, it 
-   might be best that way. */
-char string_val[1000];
-
-/* Extra comments below are all the individual 
-   files to be opened and closed, I have not
-   yet figured out how to open all at once instead
-   of individual at a time. I don't know if there is
-   a more effecient way to do it, but just in case,
-   I commented them all out and kept them. */
-while (fscanf(inFile, "%s", string_val) == 1) {
-	printf("%s\n", string_val);
-}
+};
 
 
-// printf("Opening file %s.\n", RS_FILE);
-// inFile = fopen(RS_FILE, "r");
+/**-----Prints-The-List-Data-Of-RS-------------------------
 
-// printf("Opening file %s.\n", PS_FILE);
-// inFile = fopen(PS_FILE, "r");
+*/
+void PrintALL_RS(List* SentList){
+    printf("\n\n [PrintALL_RS-TechReport.c] \n\n");
+};
 
-// printf("Opening file %s.\n", HS_FILE);
-// inFile = fopen(HS_FILE, "r");
 
-//print_to_file(inFile, "List of operating systems: ", 42);
-//print_to_file(inFile, "List of operating systems: ", 123);
 
-/* This is just to test to see if I can open and potentially read the 
-   report on the operating systems before trying to print it. */
+/**----Prints-The-Data-Of-HV-Node--------------------------
 
-//printf("Reading Operating Systems.\n");
-//fscanf(inFile, 
+*/
+void PrintNode_HV(){
 
-/* Clean-up */
-fclose(inFile);
+    printf("\n\n [PrintNode_HV-TechReport.c] \n\n");
 
-return 0;
-}
+};
+
+
+
+/**-----Prints-The-List-Data-Of-HV-------------------------
+
+*/
+void PrintALL_HV(List* SentList){
+    printf("\n\n [Temp] \n\n");
+};
+
+/**----Prints-The-Data-Of-PS-Node--------------------------
+    This one may not be needed as this is not an option yet
+*/
+void PrintNode_PS(){
+    printf("\n\n [PrintNode_PS-TechReport.c] \n\n");
+};
+
+
+
+
+
+/**-----Prints-The-List-Data-Of-PS-------------------------
+
+*/
+void PrintALL_PS(List* SentList){
+    printf("\n\n [PrintALL_PS-TechReport.c] \n\n");
+};
