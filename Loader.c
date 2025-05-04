@@ -1,52 +1,18 @@
-#include "Loader.h"
-#include "Main.h"  // if you need access to structures like DataContext
+/*Info Box
+]
+]   Free_Data has to be rewritten to free the new data formating (To-DO)
+]
+*/
+#include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "Loader.h" // Self
+#include "Main.h"   // Free_data
+
 
 //----------Data-Context-Clearing------------------
 void free_data(DataContext *ctx) {
-    if (!ctx) return;
-
-    // Free OperatingSystem entries
-    for (size_t i = 0; i < ctx->os_count; i++) {
-        // Assuming loader strdup'd id, name, platform
-        free(ctx->oses[i].id);
-        free(ctx->oses[i].name);
-        free(ctx->oses[i].platform);
-    }
-    free(ctx->oses);
-
-    // Free Software entries
-    for (size_t i = 0; i < ctx->sw_count; i++) {
-        // Assuming loader strdup'd id, name, category
-        free(ctx->softs[i].id);
-        free(ctx->softs[i].name);
-        free(ctx->softs[i].category);
-    }
-    free(ctx->softs);
-
-    // Free Hypervisor entries
-    for (size_t i = 0; i < ctx->hv_count; i++) {
-        // Assuming loader strdup'd id and name
-        free(ctx->hvs[i].id);
-        free(ctx->hvs[i].name);
-    }
-    free(ctx->hvs);
-
-    // Free Product entries
-    for (size_t i = 0; i < ctx->prod_count; i++) {
-        // Assuming loader strdup'd id, name, and other strings
-        free(ctx->prods[i].id);
-        free(ctx->prods[i].name);
-        // free any other strdup'd fields here
-    }
-    free(ctx->prods);
-
-    // Optionally: zero out counts
-    ctx->os_count   = 0;
-    ctx->sw_count   = 0;
-    ctx->hv_count   = 0;
-    ctx->prod_count = 0;
+    printf("\n\n [free_data-Loader.c] \n\n");
 }
 
 //-------------File-Loading-and-Data-Handle--------------------------------------------
@@ -115,19 +81,34 @@ void removeLastChar(char *str){
     }
 }
 
+// Open a file for reading
+FILE* OpenFile(const char *SentFileTxt){
+   // printf("Opening: %s\n",SentFileTxt);
+    FILE* OpenedFile = NULL;
+    OpenedFile = fopen(SentFileTxt,"r");
+    return OpenedFile;
+}
+
+// Close a file after reading
+void CloseFile(FILE* SentFile){
+   // printf("Closing File\n");
+    fclose(SentFile);
+}
 
 // Load functions for specific files (Storing in the form of a linked list)
-void LoadAll_OS(FILE* SentFile, List* SentList){
+void LoadAll_OS(const char *SentFileTxt, List* SentList){
     //Loop until file end
+
+    FILE* SentFile = OpenFile(SentFileTxt);
     //-----Read-Line----------
     char ReadLine[100];
     char Tempcategory[20];
     int Readcount = 0;
 
     while(fgets(ReadLine,sizeof(ReadLine),SentFile) != NULL){
-
     //---Seperate-Read-Data------
         char* token = strtok(ReadLine,Filters);
+       // printf("%s\n",token);
     // Detect for catagories and data
         if (Readcount == 0){
             strcpy(Tempcategory,token);
@@ -138,42 +119,49 @@ void LoadAll_OS(FILE* SentFile, List* SentList){
 
         }else{
             //------Create-Empty-Node---
+           // printf("Storing ID\n");
             Node* CurrentNode = CreateNode();
             AssignListHead(SentList,CurrentNode);
             //Fill List with data
             strcpy(CurrentNode->ID,ReadLine);
-            strcpy(CurrentNode->category,Tempcategory);
-            
-            int I;
+            strcpy(CurrentNode->Platform,Tempcategory);
 
+            int I;
+            //printf("Data\n");
             for (I = 0; I < 4;I++){
                 token = strtok(NULL,Filters);
-                
+                //printf("Data: %s\n",token);
                 switch(I){
                     case 0:
                         strcpy(CurrentNode->Name,token);
+                       // printf("Stored: %s\n",CurrentNode->Name);
                     break;
                     case 1:
                         strcpy(CurrentNode->Version,token);
+                         // printf("Stored: %s\n",CurrentNode->Version);
                     break;
                     case 2:
                         strcpy(CurrentNode->Hardware,token);
+                         // printf("Stored: %s\n",CurrentNode->Hardware);
                     break;
                     case 3:
                         strcpy(CurrentNode->ReDate,token);
+                         // printf("Stored: %s\n",CurrentNode->ReDate);
                     break;
                 }
             }
         }
         //------Increase-Count-Read-Next-------
         Readcount += 1;
-       // printf("ReadCount: %d\n", Readcount);
+      // printf("ReadCount: %d\n", Readcount);
     }
-
-   // printf("\n---Finished-Filling-OS----\n");
+    CloseFile(SentFile);
+  // printf("\n---Finished-Filling-OS----\n");
 };
 
-void LoadAll_RS(FILE* SentFile, List* SentList){
+void LoadAll_RS(const char *SentFileTxt, List* SentList){
+    FILE* SentFile = OpenFile(SentFileTxt);
+
     char ReadLine[100];
     char Tempcategory[20];
     int Readcount = 0;
@@ -204,7 +192,7 @@ void LoadAll_RS(FILE* SentFile, List* SentList){
             //printf("Category: %s\n",Tempcategory);
             //Store Data
             strcpy(CurrentNode->ID,ReadLine);
-            strcpy(CurrentNode->category,Tempcategory);
+            strcpy(CurrentNode->Platform,Tempcategory);
 
             int I;
 
@@ -226,10 +214,13 @@ void LoadAll_RS(FILE* SentFile, List* SentList){
         //------Increase-Count-Read-Next-------
         Readcount += 1;
     }
+     CloseFile(SentFile);
    // printf("\n---Finished-Filling-RS----\n");
 };
 
-void LoadAll_HV(FILE* SentFile, List* SentList){
+void LoadAll_HV(const char *SentFileTxt, List* SentList){
+    FILE* SentFile = OpenFile(SentFileTxt);
+
     char ReadLine[100];
 
     while(fgets(ReadLine,sizeof(ReadLine),SentFile) != NULL){
@@ -259,11 +250,12 @@ void LoadAll_HV(FILE* SentFile, List* SentList){
         }
 
     }
+     CloseFile(SentFile);
     //printf("\n---Finished-Filling-HS----\n");
 };
 
-void LoadAll_PS(FILE* SentFile, List* SentList){
-
+void LoadAll_PS(const char *SentFileTxt, List* SentList){
+    FILE* SentFile = OpenFile(SentFileTxt);
     char ReadLine[1000];
 
     while(fgets(ReadLine,sizeof(ReadLine),SentFile) != NULL){
@@ -323,5 +315,6 @@ void LoadAll_PS(FILE* SentFile, List* SentList){
         removeLastChar(CurrentNode->Supported_HV);
 
     }
+     CloseFile(SentFile);
     //printf("\n---Finished-Filling-PS----\n");
 };
