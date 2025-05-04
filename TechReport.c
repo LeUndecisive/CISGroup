@@ -1,5 +1,6 @@
 /*---Info-Box-----------
 ]   Fill out print function declarations (To-DO)
+]   TechReport.h also need declarations
 ]   Organization of the print statements can be altered (Formating)
 ]   Please use the other filled print statements as a reference source
 */
