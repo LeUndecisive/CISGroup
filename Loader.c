@@ -12,10 +12,11 @@
 
 //----------Data-Context-Clearing------------------ 
 void free_data(DataContext *ctx) {
-    if (!&ctx) return;
+   
     printf("\n\n [free_data-Loader.c] \n\n");
 
     /* Commented out | I do apolgize for removing contents 
+    if (!&ctx) return;
     
       // Free OperatingSystem entries
      for (size_t i = 0; i < ctx->os_count; i++) {
