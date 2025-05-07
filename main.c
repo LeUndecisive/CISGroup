@@ -52,7 +52,7 @@ int load_files(DataContext* ctx, const char* os_file, const char* rs_file, const
 //------The-main-which-runs-all----------------
 
 int main() {
-//--Replace Parts of main
+//--Replaced Parts of main
     char *FILEARRAY[] = {OS_FILE,RS_FILE,HV_FILE,PS_FILE};
 
     DataContext ctx;
