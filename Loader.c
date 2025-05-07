@@ -349,10 +349,7 @@ void LoadAll_PS(const char *SentFileTxt, List* SentList){
                     strcat(CurrentNode->Supported_HV,token);
                     strcat(CurrentNode->Supported_HV,",");
 
-                }else{
-                    printf("\n\n Comparision Error Was Document Altered?(HyperVisor) \n\n");
                 }
-
             }
 
             token = strtok(NULL,Filters);
