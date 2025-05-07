@@ -161,7 +161,7 @@ void LoadAll_OS(const char *SentFileTxt, List* SentList){
         if (Readcount == 0){
             strcpy(Tempcategory,token);
 
-        }else if (Readcount == 11){
+        }else if (Readcount == 12){
             Tempcategory[0] = '\0';
             strcpy(Tempcategory,token);
 
