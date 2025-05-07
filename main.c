@@ -18,11 +18,11 @@
 // File path macros (adjust names/paths as needed)
 #define OS_FILE "FinalProjectDataOS.csv"
 #define RS_FILE "FinalProjectDataRS.csv"
-#define HV_FILE "FinalProjectDataHS.csv"
+#define HV_FILE "FinalProjectDataHV.csv"
 #define PS_FILE "FinalProjectDataPS.csv"
 
 // Function to load files
-int load_files(DataContext* ctx, const char* os_file, const char* rs_file, const char* hs_file, const char* ps_file) {
+int load_files(DataContext* ctx, const char* os_file, const char* rs_file, const char* hv_file, const char* ps_file) {
 
     initList(&ctx->oses);
     initList(&ctx->softs);
@@ -31,7 +31,7 @@ int load_files(DataContext* ctx, const char* os_file, const char* rs_file, const
 
     LoadAll_OS(os_file,&ctx->oses);
     LoadAll_RS(rs_file,&ctx->softs);
-    LoadAll_HV(hs_file,&ctx->hvs);
+    LoadAll_HV(hv_file,&ctx->hvs);
     LoadAll_PS(ps_file,&ctx->prods);
 
 
