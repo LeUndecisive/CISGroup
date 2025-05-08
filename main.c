@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Loader.h"       // loader.c: load_all_* functions
-#include "TechReport.h"   // TechReport.c: Print functions
+#include "Print.h"   // TechReport.c: Print functions
 #include "Menu.h"
 #include "Main.h"
 

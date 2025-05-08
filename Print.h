@@ -1,5 +1,5 @@
-#ifndef TECHREPORT_H
-#define TECHREPORT_H
+#ifndef PRINT_H
+#define PRINT_H
 #include "Loader.h"
 #include "Main.h"  // Include the main header for structures
 
