@@ -1,0 +1,36 @@
+After launching the application you will prompted with 8 options 
+    OS Support for a Product
+    List all OS by platform
+    Software support for a product
+    List all software by category
+    Hypervisor support for a product
+    List all hypervisors
+    List all products
+    Exit
+You will be asked to input a number based on the option you want (1-7 and 0 for Exit)
+
+OS Support for a Product
+    This option will ask the user to enter a product ID. (Current avalable ID follow the scheme of OS# where # is the product you wish to see 1 -16)
+    
+    Once you have entered the required ID you will presented with the Platform, ID, Name, Version, Hardware, and its Release Date Example: Platform: LINUX || ID: OS1 || Name: CentOS || Version: 8.0 || Hardware: x86-64 || Release Date: 9/24/2019
+
+List all OS by platform
+    This will simply list all OS avaiable and sort them by the platform associated with them
+
+Software support for a product
+    This option will ask the user to input the Software Support ID (SS#) (1-15)
+    After inputing the SS ID you will recieve the ID, Name, Version, Platform, and Release Date Example:ID: SS6 || Name: Google Cloud || Version: 429 || Platform: CLOUD PLATFORM || Release Date: 5/2/2023
+
+List all software by category
+    This will list all Software avaiable and sort them by Platform
+
+Hypervisor support for a product
+    This will ask the user to input the Hypervisor ID (HV#) (1-5)
+    Once the HV ID has been input, it will display the Hypervisor's ID, Name, Version, and Release Date. Example: ID: HV4 || Name: Red Hat KVM || Version: 9.0 || Release Date: 5/17/2022 
+
+List all hypervisors
+    This option wil display all avaiable Hypervisors
+
+List all products
+    This will display all Products avaiable along with the Product ID, Version, Hardware, and Release Date. Each Product is then listed with each Suported OS, RS, and HV and their supported IDs
+    
