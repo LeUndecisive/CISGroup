@@ -2,7 +2,7 @@ CC = gcc
 
 CFLAGS = -Wall -g
 
-SRC = Loader.c Menu.c Print.c Main.c
+SRC = Loader.c Menu.c Print.c main.c
 
 all:
 
