@@ -99,14 +99,21 @@ void menu(DataContext *ctx) {
     int choice;
     do {
         printf("\n=== Software Compatibility Reports ===\n");
-        printf("1. OS support for a product\n");
-        printf("2. List all OS by platform\n");
-        printf("3. Software support for a product\n");
-        printf("4. List all software by category\n");
-        printf("5. Hypervisor support for a product\n");
-        printf("6. List all hypervisors\n");
-        printf("7. List all products\n");
-        printf("0. Exit\n");
+        // printf("1. OS support for a product\n");
+        // printf("2. List all OS by platform\n");
+        // printf("3. Software support for a product\n");
+        // printf("4. List all software by category\n");
+        // printf("5. Hypervisor support for a product\n");
+        // printf("6. List all hypervisors\n");
+        // printf("7. List all products\n");
+		printf("1. List all products\n");
+		printf("2. List all software by category\n");
+		printf("3. Software support for a product\n");
+		printf("4. List all OS by platform\n");
+		printf("5. OS support for a product\n");
+		printf("6. List all hypervisors\n");
+		printf("7. Hypervisor support for a product\n");
+		printf("0. Exit\n");
         printf("Select an option: ");
         if (scanf("%d", &choice) != 1) {
             while (getchar() != '\n');  // clear invalid input
@@ -114,13 +121,20 @@ void menu(DataContext *ctx) {
             continue;
         }
         switch (choice) {
-            case 1: report_product_os(&ctx->oses);   break;
-            case 2: PrintALL_OS(&ctx->oses);         break;
-            case 3: report_product_rs(&ctx->softs);  break;
-            case 4: PrintALL_RS(&ctx->softs);        break;
-            case 5: report_product_hv(&ctx->hvs);    break;
-            case 6: PrintALL_HV(&ctx->hvs);          break;
-            case 7: PrintALL_PS(&ctx->prods);        break;
+            // case 1: report_product_os(&ctx->oses);   break;
+            // case 2: PrintALL_OS(&ctx->oses);         break;
+            // case 3: report_product_rs(&ctx->softs);  break;
+            // case 4: PrintALL_RS(&ctx->softs);        break;
+            // case 5: report_product_hv(&ctx->hvs);    break;
+            // case 6: PrintALL_HV(&ctx->hvs);          break;
+            // case 7: PrintALL_PS(&ctx->prods);        break;
+			case 1: PrintALL_PS(&ctx->prods);       break;
+			case 2: PrintALL_RS(&ctx->softs);       break;
+			case 3: report_product_rs(&ctx->softs); break;
+			case 4: PrintALL_OS(&ctx->oses);        break;
+			case 5: report_product_os(&ctx->oses);  break;
+			case 6: PrintALL_HV(&ctx->hvs);         break;
+			case 7: report_product_hv(&ctx->hvs);   break;
             case 0: printf("Exiting...\n");         break;
             default: printf("Invalid option.\n");
         }
