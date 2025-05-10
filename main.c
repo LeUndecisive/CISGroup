@@ -10,18 +10,26 @@
 */
 #include <stdio.h>
 #include <stdlib.h>
-#include "Loader.h"       // loader.c: load_all_* functions
-#include "Print.h"   // TechReport.c: Print functions
+#include "Loader.h" // loader.c: load_all_* functions
+#include "Print.h" // TechReport.c: Print functions
 #include "Menu.h"
 #include "Main.h"
 
-// File path macros (adjust names/paths as needed)
+// File path macros (adjust names/paths as needed).
 #define OS_FILE "FinalProjectDataOS.csv"
 #define RS_FILE "FinalProjectDataRS.csv"
 #define HV_FILE "FinalProjectDataHV.csv"
 #define PS_FILE "FinalProjectDataPS.csv"
 
-// Function to load files
+/* load_files
+Returns a message.
+Loads all the required report 
+files to be read and checks
+to see if any of them can be loaded
+and then prints a message to 
+the user to confirm 
+a success or failure. 
+*/
 int load_files(DataContext* ctx, const char* os_file, const char* rs_file, const char* hv_file, const char* ps_file) {
 
     initList(&ctx->oses);

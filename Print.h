@@ -1,17 +1,17 @@
 #ifndef PRINT_H
 #define PRINT_H
 #include "Loader.h"
-#include "Main.h"  // Include the main header for structures
+#include "Main.h"  // Include the main header for structures.
 
-// Function declarations for reporting
+// Function declarations for reporting.
 
 /**-----Prints-All-IDS-In-List------------
-    Used when the user provided ID fails
+    Used when the user provided ID fails.
 */
 void PrintALL_IDS(List* SentList);
 
 /**---Prints-Data-From-OS-Node----------
-    Used when the user provided ID fails
+    Used when the user provided ID fails.
 */
 void PrintNode_OS(Node* SentNode);
 

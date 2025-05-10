@@ -69,32 +69,51 @@ void report_product_rs(List *SentRS) {
 // Product-specific Hypervisor Support
 //------------------------------------------------------------------------
 
+/* report_product_hv
+Returns nothing.
+Allows the user to input a product's
+ID to not only search for that specific
+item, but narrow down their search results 
+so they do not feel overwhelmed when looking at
+multiple results at once. The function also checks
+to see if the inputed ID matches with any ones 
+stored within the report files and prints a message
+stating if a match has been found or not. 
+*/
 void report_product_hv(List *SentHV) {
- char input[6];  // Adjust size if needed
+ char input[6];  // Adjust size if needed.
     printf("\nEnter product ID: ");
-    while (getchar() != '\n');  // flush previous newline
-    if (!fgets(input, sizeof(input), stdin)) return;
+    while (getchar() != '\n');  // flush previous newline.
+    if (!fgets(input, sizeof(input), stdin)) 
+	return;
     input[strcspn(input, "\n")] = '\0';
 
-    // Search for matching product by ID or name
+    // Search for matching product by ID or name.
     Node *p = SearchForID(SentHV,input);
 
-    // If not found notify user
+    // If not found notify user.
     if (!p) {
         printf("ID '%s' not found.\n", input);
         PrintALL_IDS(SentHV);
     }else{
         PrintNode_HV(p);
     }
-    // Print the data of HV Node to user
-
+    // Print the data of HV Node to user.
+	return;
 }
-
 
 //------------------------------------------------------------------------
 // MENU
 //------------------------------------------------------------------------
 
+/* menu
+Returns nothing.
+Shows a menu of software 
+reports that the user can select
+from if they want to know any 
+information about a paricular product
+such as the name, release date, software 
+version and so forth. */
 void menu(DataContext *ctx) {
     int choice;
     do {

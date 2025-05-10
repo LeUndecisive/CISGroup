@@ -11,6 +11,14 @@
 
 
 //----------Data-Context-Clearing------------------ 
+
+/* free_data
+Returns nothing.
+Frees data in the nodes 
+and in memory so all the files
+can be navigated and properly
+loaded. */
+
 void free_data(DataContext *ctx) {
    
     printf("\n\n [free_data-Loader.c] \n\n");
@@ -65,13 +73,23 @@ void free_data(DataContext *ctx) {
 
 //-------------File-Loading-and-Data-Handle--------------------------------------------
 
-// Create a new node to be used
+/* 
+CreateNode
+Returns a new node.
+Creates a new node to be 
+used for each file and any
+other associated data.
+*/
 Node* CreateNode(){
     Node* NewNode = (Node*)malloc(sizeof(Node));
     return NewNode;
 }
 
-// Assigns the list head and tail (Updates tail for new node)
+/* AssignListHead
+Returns nothing.
+Updates the tail 
+for the new node.
+*/ 
 void AssignListHead (List* SentList, Node* SentNode){
     if (SentList->Head == NULL){
         SentList->Head = SentNode;
@@ -82,9 +100,15 @@ void AssignListHead (List* SentList, Node* SentNode){
         SentList->Tail = SentNode;
         SentList->Tail->next = NULL;
     }
+	return;
 }
 
-// While search for a selected ID (Returns NULL unless Node is found)
+/* SearchForID
+Returns NULL (unless Node is found).
+Searches for an ID that the 
+user selects within the menu like
+option 1, 2, 4, 4, 5, and etc. */
+
 Node* SearchForID(List* SentList,char SentID[5]){
 
     Node* CurrentNode = SentList->Head;
@@ -100,16 +124,25 @@ Node* SearchForID(List* SentList,char SentID[5]){
 
 }
 
-// Set list Head and Tail to NULL
+// Set list Head and Tail to NULL.
 void initList(List* SentList){
     SentList->Head = NULL;
     SentList->Tail = NULL;
+	return;
 }
 
-// Strings to detect when filtering data (sorting)
+/*String to detect comma characters
+and filter them out.*/
 const char Filters[] = ",\"";
 
-// Clear spaces within reading (Used for removing random spaces)
+
+/* removeSpaces
+Returns nothing.
+Clears random spacing characters 
+when reading in the files. */
+
+/* Clear spaces within reading 
+(Used for removing random spaces)*/
 void removeSpaces(char *str) {
     int i, j = 0;
     int len = strlen(str);
@@ -119,17 +152,28 @@ void removeSpaces(char *str) {
         }
     }
     str[j] = '\0'; // Null-terminate the modified string
+	return;
 }
 
-// Clear last item from string (Used for clearing added characters when storing string)
+/* removeLastChar
+Returns nothing.
+Removes added characters 
+when sorting strings. */
+
 void removeLastChar(char *str){
     int Length = strlen(str);
     if (Length > 1){
         str[Length - 1] = '\0';
     }
+	return;
 }
 
-// Open a file for reading
+/*
+OpenFile 
+Returns an item to main.
+Opens files to be read.
+*/
+
 FILE* OpenFile(const char *SentFileTxt){
    // printf("Opening: %s\n",SentFileTxt);
     FILE* OpenedFile = NULL;
@@ -137,15 +181,26 @@ FILE* OpenFile(const char *SentFileTxt){
     return OpenedFile;
 }
 
-// Close a file after reading
+/*
+CloseFile 
+Returns nothing.
+Closes files once done being 
+read. */
+
 void CloseFile(FILE* SentFile){
    // printf("Closing File\n");
     fclose(SentFile);
+	return;
 }
 
-// Load functions for specific files (Storing in the form of a linked list)
+/*
+LoadAll_OS
+Returns nothing.
+Loads all the files relating
+to the operating systems. */
+
 void LoadAll_OS(const char *SentFileTxt, List* SentList){
-    //Loop until file end
+    //Loop until file end.
 
     FILE* SentFile = OpenFile(SentFileTxt);
     //-----Read-Line----------
@@ -205,8 +260,15 @@ void LoadAll_OS(const char *SentFileTxt, List* SentList){
     }
     CloseFile(SentFile);
   // printf("\n---Finished-Filling-OS----\n");
-};
+  return;
+}
 
+/* LoadAll_RS
+Returns nothing.
+Loads all the files 
+pertaining to any related
+software the user may want
+to search. */
 void LoadAll_RS(const char *SentFileTxt, List* SentList){
     FILE* SentFile = OpenFile(SentFileTxt);
 
@@ -264,8 +326,13 @@ void LoadAll_RS(const char *SentFileTxt, List* SentList){
     }
      CloseFile(SentFile);
    // printf("\n---Finished-Filling-RS----\n");
-};
+   return;
+}
 
+/* LoadAll_HV
+Returns nothing.
+Loads all the files relating 
+to hypervisors. */
 void LoadAll_HV(const char *SentFileTxt, List* SentList){
     FILE* SentFile = OpenFile(SentFileTxt);
 
@@ -300,8 +367,15 @@ void LoadAll_HV(const char *SentFileTxt, List* SentList){
     }
      CloseFile(SentFile);
     //printf("\n---Finished-Filling-HS----\n");
-};
+	return;
+}
 
+/* LoadAll_PS
+Returns nothing.
+Loads all files pertaining
+to any software 
+product that the user 
+may want to search. */
 void LoadAll_PS(const char *SentFileTxt, List* SentList){
     FILE* SentFile = OpenFile(SentFileTxt);
     char ReadLine[1000];
@@ -362,4 +436,5 @@ void LoadAll_PS(const char *SentFileTxt, List* SentList){
     }
      CloseFile(SentFile);
     //printf("\n---Finished-Filling-PS----\n");
-};
+	return;
+}

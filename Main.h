@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "Loader.h"
 
-// Define DataContext to hold all lists of data
+// Define DataContext to hold all lists of data.
 typedef struct {
     List oses;         /**< Array of OperatingSystem entries */
 
