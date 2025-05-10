@@ -59,6 +59,7 @@ void report_product_rs(List *SentRS) {
         printf("ID '%s' not found.\n", input);
          PrintALL_IDS(SentRS);
     }else{
+		printf("%-10s %-40s %-11s %-20s %-20s\n","ID","Name","Version","Platform","Release Date");
         PrintNode_RS(p);
     }
     // Print the data of RS Node to user

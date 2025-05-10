@@ -52,9 +52,6 @@ int load_files(DataContext* ctx, const char* os_file, const char* rs_file, const
             return 0; // Failure
         }
     return 1; // Success
-
-
-
 }
 
 //------The-main-which-runs-all----------------

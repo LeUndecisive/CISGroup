@@ -42,12 +42,21 @@ pertaining to the operating systems.
     Used when the user provided ID fails
 */
 void PrintNode_OS(Node* SentNode){
-    printf("Platform: %s ||",SentNode->Platform);
-    printf(" ID: %s ||",SentNode->ID);
-    printf(" Name: %s ||",SentNode->Name);
-    printf(" Version: %s ||",SentNode->Version);
-    printf(" Hardware: %s ||",SentNode->Hardware);
-    printf(" Release Date: %s",SentNode->ReDate);
+    printf("%-10s %-40s %-11s %-25s %-35s\n","ID","Name","Version","Platform","Release Date");
+	// printf("Platform: %s ||",SentNode->Platform);
+    
+	printf("%-10s ",SentNode->ID);
+    printf("%-40s ",SentNode->Name);
+    printf("%-11s ",SentNode->Version);
+    printf("%-25s ",SentNode->Hardware);
+    printf("%-35s",SentNode->ReDate);
+	
+	
+	// printf(" ID: %s ||",SentNode->ID);
+    // printf(" Name: %s ||",SentNode->Name);
+    // printf(" Version: %s ||",SentNode->Version);
+    // printf(" Hardware: %s ||",SentNode->Hardware);
+    // printf(" Release Date: %s",SentNode->ReDate);
 	return;
 }
 
@@ -66,7 +75,7 @@ void PrintALL_OS(List* SentList){
    // printf("\n\n [PrintALL_OS-TechReport.c] \n\n"); [Remove or Comment this placeholders]
     Node* CurrentNode = SentList->Head;
     while (CurrentNode != NULL){
-        PrintNode_OS(CurrentNode);
+		PrintNode_OS(CurrentNode);
         printf("\n\n");
         CurrentNode =  CurrentNode->next;
     }
@@ -153,8 +162,18 @@ search results relating to those items. */
 */
 void PrintNode_HV(Node* SentNode){
 
-    //printf("\n\n [PrintNode_HV-TechReport.c] \n\n");
-    printf("ID: %s || ", SentNode->ID);
+    /*New print formatting ideas for testing.
+	
+	printf("\n\n [PrintNode_HV-TechReport.c] \n\n");
+	printf("%-10s %-19s %-11s %-11s\n","ID","Name","Version","Release Date");
+    printf("%-12s ", SentNode->ID);
+	printf("%-12s ", SentNode->Name);
+    printf("%-20s ", SentNode->Version);
+    printf("%-8s ", SentNode->ReDate);
+    printf("Release Date: %s", SentNode->ReDate); */
+	
+	
+	printf("ID: %s || ", SentNode->ID);
     printf("Name: %s || ", SentNode->Name);
     printf("Version: %s || ", SentNode->Version);
     printf("Release Date: %s", SentNode->ReDate);
