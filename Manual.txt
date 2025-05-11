@@ -1,36 +1,50 @@
-After launching the application you will prompted with 8 options 
-    OS Support for a Product
-    List all OS by platform
-    Software support for a product
-    List all software by category
-    Hypervisor support for a product
-    List all hypervisors
-    List all products
-    Exit
-You will be asked to input a number based on the option you want (1-7 and 0 for Exit)
+Instructions on how to view the Software Compatibility Reports:
 
-OS Support for a Product
-    This option will ask the user to enter a product ID. (Current avalable ID follow the scheme of OS# where # is the product you wish to see 1 -16)
+After launching the application you will be prompted with 8 options:
+   1. List all products
+   2. List all software by category
+   3. Software support for a product
+   4. List all OS by platform
+   5. OS support for a product
+   6. List all hypervisors
+   7. Hypervisor support for a product
+   0. Exit
+  
+You will be asked to select one of the following numbers above (1-7 and 0 for Exit). You may 
+either select to read a full report for any of the products listed under "List all" or search for a specific product by first selecting 
+a "(product name) support" and then enter the product's distinct ID to recieve a smaller portion of that particular report. Once you are finished reading
+the reports, press "0" to exit the program. If you want to read another report for another product, 
+please repeat the following steps above. Down below you will find
+more detailed descriptions of what each option will show you once selected.  
+
+OS Support for a Product:
+    This option will ask the user to enter a product ID. (Current avalable ID follow the scheme of OS# where # is the product you wish to see 1-16)
     
-    Once you have entered the required ID you will presented with the Platform, ID, Name, Version, Hardware, and its Release Date Example: Platform: LINUX || ID: OS1 || Name: CentOS || Version: 8.0 || Hardware: x86-64 || Release Date: 9/24/2019
+    Once you have entered the required ID you will be presented with the Platform, ID, Name, Version, Hardware, and its Release 
+	Date Example: Platform: LINUX ID: OS1 || Name: CentOS || Version: 8.0 || Hardware: x86-64 || Release Date: 9/24/2019
+	(These examples are only for the reading portion of this manual, whereas the actual formatting will be slightly different
+	in the program).
 
-List all OS by platform
-    This will simply list all OS avaiable and sort them by the platform associated with them
+List all OS by platform:
+    This will simply list all operating systems (OS) avaiable and sort them by the platform associated with them.
 
-Software support for a product
-    This option will ask the user to input the Software Support ID (SS#) (1-15)
-    After inputing the SS ID you will recieve the ID, Name, Version, Platform, and Release Date Example:ID: SS6 || Name: Google Cloud || Version: 429 || Platform: CLOUD PLATFORM || Release Date: 5/2/2023
+Software support for a product:
+    This option will ask the user to input the Software Support ID (SS#) (1-15).
+    After inputing the SS ID, you will recieve the ID, Name, Version, Platform, and Release 
+	Date Example:ID: SS6 || Name: Google Cloud || Version: 429 || Platform: CLOUD PLATFORM || Release Date: 5/2/2023
 
-List all software by category
-    This will list all Software avaiable and sort them by Platform
+List all software by category:
+    This will list all the software avaiable and sort them by their associated platforms.
 
-Hypervisor support for a product
-    This will ask the user to input the Hypervisor ID (HV#) (1-5)
-    Once the HV ID has been input, it will display the Hypervisor's ID, Name, Version, and Release Date. Example: ID: HV4 || Name: Red Hat KVM || Version: 9.0 || Release Date: 5/17/2022 
+Hypervisor support for a product:
+    This will ask the user to input the Hypervisor ID (HV#) (1-5).
+    Once the HV ID has been inputed, it will display the Hypervisor's ID, Name, Version, and Release Date. 
+	Example: ID: HV4 || Name: Red Hat KVM || Version: 9.0 || Release Date: 5/17/2022 
 
-List all hypervisors
-    This option wil display all avaiable Hypervisors
+List all hypervisors:
+    This option will display all available Hypervisors.
 
-List all products
-    This will display all Products avaiable along with the Product ID, Version, Hardware, and Release Date. Each Product is then listed with each Suported OS, RS, and HV and their supported IDs
+List all products:
+    This will display all products available along with the Product ID, Version, Hardware, and Release Date. 
+	Each product will then be listed with each suported OS, RS, and HV and their supported IDs.
     
