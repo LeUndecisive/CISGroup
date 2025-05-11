@@ -10,33 +10,33 @@
 #include <string.h>
 #include <strings.h>
 #include <ctype.h>
-#include "Print.h" // Defines printf functions
-#include "Menu.h"       // Defines Self
-#include "Loader.h"     // Defines Nodes,List,loader functions
-#include "Main.h"       // Defines Data Context
+#include "Print.h" // Defines printf functions.
+#include "Menu.h"       // Defines Self.
+#include "Loader.h"     // Defines Nodes,List,loader functions.
+#include "Main.h"       // Defines Data Context.
 
 //------------------------------------------------------------------------
 // Product-specific OS Support
 //------------------------------------------------------------------------
 
 void report_product_os(List *SentOS) {
-    char input[6];  // Adjust size if needed
+    char input[6];  // Adjust size if needed.
     printf("\nEnter product ID: ");
-    while (getchar() != '\n');  // flush previous newline
+    while (getchar() != '\n');  // flush previous newline.
     if (!fgets(input, sizeof(input), stdin)) return;
     input[strcspn(input, "\n")] = '\0';
 
-    // Search for matching product by ID or name
+    // Search for matching product by ID or name.
     Node *p = SearchForID(SentOS,input);
 
-    // If not found notify user
+    // If not found notify user.
     if (!p) {
         printf("ID '%s' not found.\n", input);
          PrintALL_IDS(SentOS);
     }else{
         PrintNode_OS(p);
     }
-    // Print the data of OS Node to user
+    // Print the data of OS Node to user.
 
 }
 
@@ -45,16 +45,16 @@ void report_product_os(List *SentOS) {
 //------------------------------------------------------------------------
 
 void report_product_rs(List *SentRS) {
-   char input[6];  // Adjust size if needed
+   char input[6];  // Adjust size if needed.
     printf("\nEnter product ID: ");
-    while (getchar() != '\n');  // flush previous newline
+    while (getchar() != '\n');  // flush previous newline.
     if (!fgets(input, sizeof(input), stdin)) return;
     input[strcspn(input, "\n")] = '\0';
 
-    // Search for matching product by ID or name
+    // Search for matching product by ID or name.
     Node *p = SearchForID(SentRS,input);
 
-    // If not found notify user
+    // If not found notify user.
     if (!p) {
         printf("ID '%s' not found.\n", input);
          PrintALL_IDS(SentRS);
@@ -62,7 +62,7 @@ void report_product_rs(List *SentRS) {
 		printf("%-10s %-40s %-11s %-20s %-20s\n","ID","Name","Version","Platform","Release Date");
         PrintNode_RS(p);
     }
-    // Print the data of RS Node to user
+    // Print the data of RS Node to user.
 
 }
 

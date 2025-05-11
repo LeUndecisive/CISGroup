@@ -22,13 +22,16 @@ void PrintALL_IDS(List* SentList){
     Node* CurrentNode = SentList->Head;
     while (CurrentNode != NULL){
         printf(" %s",CurrentNode->ID);
-        CurrentNode =  CurrentNode->next;
+        CurrentNode = CurrentNode->next;
     }
      printf("\n\n");
 	 return;
 }
 
-/* PrintNode_OS
+/*---Prints-Data-From-OS-Node----------
+Used when the user provided ID fails
+	
+PrintNode_OS
 Returns nothing.
 Prints an alternative message
 to the user when the inputed ID (for operating 
@@ -36,10 +39,6 @@ systems) fails to be found within the report files.
 It is also used to help narrow down search
 results when looking for specifc products 
 pertaining to the operating systems. 
-*/
-
-/*---Prints-Data-From-OS-Node----------
-    Used when the user provided ID fails
 */
 void PrintNode_OS(Node* SentNode){
     printf("%-10s %-40s %-11s %-25s %-35s\n","ID","Name","Version","Platform","Release Date");
@@ -51,7 +50,6 @@ void PrintNode_OS(Node* SentNode){
     printf("%-25s ",SentNode->Hardware);
     printf("%-35s",SentNode->ReDate);
 	
-	
 	// printf(" ID: %s ||",SentNode->ID);
     // printf(" Name: %s ||",SentNode->Name);
     // printf(" Version: %s ||",SentNode->Version);
@@ -60,16 +58,13 @@ void PrintNode_OS(Node* SentNode){
 	return;
 }
 
-/* PrintALL_OS
+/*
+-----Prints-The-List-Data-Of-OS-------------------------
+ 
+PrintALL_OS
 Returns nothing.
 Prints all data pertaining 
 to the operating systems.
-*/
-
-/*
-
------Prints-The-List-Data-Of-OS-------------------------
-
 */
 void PrintALL_OS(List* SentList){
    // printf("\n\n [PrintALL_OS-TechReport.c] \n\n"); [Remove or Comment this placeholders]
@@ -82,7 +77,8 @@ void PrintALL_OS(List* SentList){
 	return;
 }
 
-/*
+/*----Prints-The-Data-Of-RS-Node--------------------------
+
 PrintNode_RS
 Returns nothing.
 Prints a specific portion of
@@ -92,10 +88,6 @@ if the node containing the data is empty.
 It also allows the user to narrow down
 the amount of information about hypervisors they
 want to view.
-*/
-
-/**----Prints-The-Data-Of-RS-Node--------------------------
-
 */
 void PrintNode_RS(Node* SentNode){
     //printf("\n\n [PrintNode_RS-TechReport.c] \n\n");
@@ -118,16 +110,14 @@ void PrintNode_RS(Node* SentNode){
 	return;
 }
 
-/* PrintALL_RS
+/*-----Prints-The-List-Data-Of-RS-------------------------
+
+PrintALL_RS
 Returns nothing.
 Prints all the data pertaining
 to related software and checks
 to make sure that the nodes containing
 the data are not empty.
- */
-
-/**-----Prints-The-List-Data-Of-RS-------------------------
-
 */
 void PrintALL_RS(List* SentList){
     //printf("\n\n [PrintALL_RS-TechReport.c] \n\n");
@@ -150,46 +140,43 @@ void PrintALL_RS(List* SentList){
 	return;
 }
 
-/* PrintNode_HV
+/*----Prints-The-Data-Of-HV-Node--------------------------
+
+PrintNode_HV
 Returns nothing.
 Prints a specific portion of data
 pertaining to the hypervisors, 
 which also allows the user to narrow down 
-search results relating to those items. */
-
-/**----Prints-The-Data-Of-HV-Node--------------------------
-
+search results relating to those items.
 */
 void PrintNode_HV(Node* SentNode){
 
-    /*New print formatting ideas for testing.
+    //New print formatting ideas for testing.
 	
-	printf("\n\n [PrintNode_HV-TechReport.c] \n\n");
-	printf("%-10s %-19s %-11s %-11s\n","ID","Name","Version","Release Date");
+	//printf("\n\n [PrintNode_HV-TechReport.c] \n\n");
+	printf("%-10s %-15s %-11s %-11s\n","ID","Name","Version","Release Date");
     printf("%-12s ", SentNode->ID);
-	printf("%-12s ", SentNode->Name);
+	printf("%-8s ", SentNode->Name);
     printf("%-20s ", SentNode->Version);
     printf("%-8s ", SentNode->ReDate);
-    printf("Release Date: %s", SentNode->ReDate); */
-	
-	
-	printf("ID: %s || ", SentNode->ID);
-    printf("Name: %s || ", SentNode->Name);
-    printf("Version: %s || ", SentNode->Version);
     printf("Release Date: %s", SentNode->ReDate);
+
+
+	// printf("ID: %s || ", SentNode->ID);
+    // printf("Name: %s || ", SentNode->Name);
+    // printf("Version: %s || ", SentNode->Version);
+    // printf("Release Date: %s", SentNode->ReDate);
 	return;
 }
 
-/* 
+/*-----Prints-The-List-Data-Of-HV-------------------------
+
 PrintALL_HV
 Returns nothing.
 Prints all the data pertaining 
 to the hypervisors and checks to make
 sure none of the nodes containing the 
-data are not empty. */
-
-/**-----Prints-The-List-Data-Of-HV-------------------------
-
+data are not empty.
 */
 void PrintALL_HV(List* SentList){
     //printf("\n\n [Temp] \n\n");
@@ -199,9 +186,13 @@ void PrintALL_HV(List* SentList){
         printf("No hypervisors found in the system.\n");
         return;
     }
-
+	printf("%-10s %-40s %-11s %-35s\n","ID","Name","Version","Release Date");
     while (CurrentNode != NULL) {
-        PrintNode_HV(CurrentNode);
+		printf("%-10s ",CurrentNode->ID);
+		printf("%-40s ",CurrentNode->Name);
+		printf("%-11s ",CurrentNode->Version);
+		printf("%-35s",CurrentNode->ReDate);
+		//PrintNode_HV(CurrentNode);
         printf("\n");
         CurrentNode = CurrentNode->next;
     }
@@ -209,39 +200,42 @@ void PrintALL_HV(List* SentList){
 	return;
 }
 
-/* PrintNode_PS
+/*----Prints-The-Data-Of-PS-Node--------------------------
+ 
+PrintNode_PS
 Returns nothing.
 Prints a specic portion of data 
 pertaining to the products, which also allows 
 the user to narrow down search results 
-relating to those items. */
-
-/**----Prints-The-Data-Of-PS-Node--------------------------
- * 
+relating to those items. 
 */
+
 void PrintNode_PS(Node* SentNode){
     //printf("\n\n [PrintNode_PS-TechReport.c] \n\n");
-    printf("ID: %s || ", SentNode->ID);
-    printf("Version: %s || ", SentNode->Version);
-    printf("Hardware: %s || ", SentNode->Hardware);
-    printf("Release Date: %s\n", SentNode->ReDate);
+    printf("%-10s %-19s %65s \n","ID","Name","Version");
+	printf("%-10s ", SentNode->ID);
+	printf("%-19s ", SentNode->Name);
+    printf("%54s ", SentNode->Version);
+    
+	// printf("ID: %s || ", SentNode->ID);
+    // printf("Version: %s || ", SentNode->Version);
+    // printf("Hardware: %s || ", SentNode->Hardware);
+    // printf("Release Date: %s\n", SentNode->ReDate);
 
-    printf("  Supported OS: %s\n", SentNode->Supported_OS[0] ? SentNode->Supported_OS : "None");
-    printf("  Supported RS: %s\n", SentNode->Supported_RS[0] ? SentNode->Supported_RS : "None");
-    printf("  Supported HS: %s\n", SentNode->Supported_HV[0] ? SentNode->Supported_HV : "None");
+    printf("\n\nSupported OS: %s\n\n", SentNode->Supported_OS[0] ? SentNode->Supported_OS : "None");
+    printf("\nSupported RS: %s\n\n", SentNode->Supported_RS[0] ? SentNode->Supported_RS : "None");
+    printf("\nSupported HS: %s\n\n", SentNode->Supported_HV[0] ? SentNode->Supported_HV : "None");
 	return;
 }
 
-/* PrintALL_PS
+/**-----Prints-The-List-Data-Of-PS-------------------------
+ 
+PrintALL_PS
 Returns nothing.
 Prints all the data pertaining
 to the products and checks to 
 make sure that the nodes containing 
 the data are not empty. 
-*/ 
-
-
-/**-----Prints-The-List-Data-Of-PS-------------------------
 
 */
 void PrintALL_PS(List* SentList){
@@ -253,9 +247,9 @@ void PrintALL_PS(List* SentList){
         printf("No products found in the system.\n");
         return;
     }
-
+	
     while (CurrentNode != NULL) {
-        PrintNode_PS(CurrentNode);
+		PrintNode_PS(CurrentNode);
         printf("\n");
         CurrentNode = CurrentNode->next;
     }

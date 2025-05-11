@@ -43,7 +43,7 @@ int load_files(DataContext* ctx, const char* os_file, const char* rs_file, const
     LoadAll_PS(ps_file,&ctx->prods);
 
 
-    /** The contents of DataContext* have been altered resulting in this change
+    /** The contents of DataContext* have been altered resulting in this change.
 
     */
     if (!&ctx->oses || !&ctx->softs || !&ctx->hvs || !&ctx->prods) {
@@ -66,7 +66,7 @@ int main() {
         return EXIT_FAILURE;
     }
 
-    // Run the Menu  loop
+    // Run the Menu loop.
     menu(&ctx);
 
     // Clean up and exit
